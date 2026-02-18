@@ -17,9 +17,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* Google Fonts — loaded as browser resource to avoid build-time network issues */}
+        {/* Preconnect hints — no ESLint concerns here */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/*
+          next/font/google requires outbound network at build time, unavailable in this
+          environment, so fonts are loaded via a plain <link> tag instead.
+        */}
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"

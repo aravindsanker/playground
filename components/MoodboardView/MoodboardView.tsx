@@ -14,11 +14,10 @@ export default function MoodboardView() {
   async function downloadMoodboard() {
     if (!boardRef.current) return;
     const { default: html2canvas } = await import('html2canvas');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const canvas = await html2canvas(boardRef.current, {
       scale: 2,
       useCORS: true,
-    } as any);
+    });
     const link = document.createElement('a');
     link.download = 'madras-drip-moodboard.png';
     link.href = canvas.toDataURL('image/png');
